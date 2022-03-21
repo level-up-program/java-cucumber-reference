@@ -1,62 +1,71 @@
-name: Bug Report
-description: File a bug report
-title: "[Bug]: "
-labels: ["bug", "triage"]
-assignees:
-  - octocat
+name: Course Feedback
+description: Provide feedback on Level Up experience
+title: "[Course Feedback]: "
+labels: ["feedback"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
+        See a typo on a slide? Wish breaks were longer? Have an idea for something to add to Level Up? Give us feedback here!
   - type: input
     id: contact
     attributes:
       label: Contact Details
-      description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@example.com
+      description: Provide your name, if you're comfortable, so we can follow up if we need more details.
+      placeholder: Firstname Lastname
     validations:
       required: false
-  - type: textarea
-    id: what-happened
+  - type: dropdown
+    id: contenttype
     attributes:
-      label: What happened?
-      description: Also tell us, what did you expect to happen?
-      placeholder: Tell us what you see!
-      value: "A bug happened!"
+      label: scope
+      description: What module is your feedback about?
+      options:
+        - Overall (Default)
+        - Logistics
+        - Case Study
+        - Kickoff
+        - Closings
+        - Team Formation
+        - Lean and Agile Modeling
+        - Human Centered Design
+        - Giving and Receiving Feedback
+        - Stories
+        - Story Mapping
+        - Definition of Ready
+        - Story Splitting
+        - Domain Models
+        - System Operations
+        - Mockups
+        - Specification by Example
+        - Definition of Done
+        - Information Radiators
+        - Activity Diagrams
+        - GRASP and SOLID
+        - Communication Diagrams
+        - Design Class Diagrams
+        - CI/CD and GitOps
+        - ATDD
+        - Test Doubles
+        - UTDD
+        - Pairing and Mobbing
+        - Code Reviews
+        - Sprint Review
+        - Retrospective
+        - Leadership
+        - Other
     validations:
       required: true
-  - type: dropdown
-    id: version
-    attributes:
-      label: Version
-      description: What version of our software are you running?
-      options:
-        - 1.0.2 (Default)
-        - 1.0.3 (Edge)
-    validations:
-      required: true
-  - type: dropdown
-    id: browsers
-    attributes:
-      label: What browsers are you seeing the problem on?
-      multiple: true
-      options:
-        - Firefox
-        - Chrome
-        - Safari
-        - Microsoft Edge
   - type: textarea
-    id: logs
+    id: description
     attributes:
-      label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
-      render: shell
+      label: What's your feedback?
+      description: Keep it constructive. How can we do what WE do, but better? (Not, "this is how I would've done it").
   - type: checkboxes
     id: terms
     attributes:
       label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
+      description: By submitting this issue, you agree to use this repository only for LevelUp classroom work and not for any confidential or private company information.
       options:
         - label: I agree to follow this project's Code of Conduct
           required: true
