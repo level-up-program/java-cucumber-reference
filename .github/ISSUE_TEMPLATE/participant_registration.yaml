@@ -1,6 +1,6 @@
 name: Participant Registration
 description: Register as a current Level Up participant
-title: "[Registration]: "
+title: "ACCESS REQUEST"
 labels: ["register"]
 assignees:
   - octocat
