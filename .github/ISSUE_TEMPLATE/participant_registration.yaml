@@ -13,6 +13,14 @@ body:
       placeholder: Firstname Lastname
     validations:
       required: false
+  - type: input
+    id: team
+    attributes:
+      label: Team Name
+      description: If you've formed teams in the workshop, what is your Team Name?
+      placeholder: Team Name
+    validations:
+      required: false
   - type: checkboxes
     id: terms
     attributes:
