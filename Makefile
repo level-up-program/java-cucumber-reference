@@ -11,19 +11,19 @@ update: bootstrap
 	echo "'Update' not implemented"
 
 run: update
-	echo "'Run' not implemented"
+		./gradlew run
 
 console:
 	echo "'Console' not implemented"
 
 clean:
-	echo "'Clean' not implemented"
+	./gradlew clean
 
 build: test
-	echo "'Build' not implemented"
+	./gradlew build
 
 test: clean update
-	echo "'Test' not implemented"
+	./gradlew test
 
 cibuild: test
-	echo "'CIBuild' Not implemented"
+	./gradlew build
