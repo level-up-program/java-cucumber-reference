@@ -10,6 +10,7 @@ public class TrophyhuntApplication {
 		SpringApplication.run(TrophyhuntApplication.class, args);
 		System.out.println("helloooooooooooooooooooooooooooo woooorld");
 		//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
+		//java -jar build/libs/trophyhunt-0.0.1-SNAPSHOT.jar
 	}
 
 }
