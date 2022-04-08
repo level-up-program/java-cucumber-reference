@@ -1,7 +1,6 @@
 package com.levelup.champions.trophyhunt;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -13,7 +12,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
   plugin = {"pretty", "html:target/cucumber-report.html"},
   features = {"src/test/resources"},
-  glue = {"game"}
+  glue = {"com.levelup.champions.trophyhunt"}
 )
 public class InitTest {
 
@@ -21,5 +20,10 @@ public class InitTest {
     public void characterInitializationTest(){
         assertTrue(true);
     }
+
+      @Test
+    public void whenGameInititalizes(){
+      assertTrue(true);
+    } 
     
 }
