@@ -2,12 +2,15 @@ package com.levelup.champions.trophyhunt;
 
 public class GameController {
 
-    PlayerCharacter captainPushIt;
-    GameMap map;
+    private PlayerCharacter captainPushIt;
+    private GameMap map;
+    private Trophy championsTrophy;
+
 
     public GameController() {
         captainPushIt = new PlayerCharacter();
         map = new GameMap();
+        championsTrophy = new Trophy();
     }
 
     public GameStatus getStatus() {
@@ -20,6 +23,10 @@ public class GameController {
 
     public GameMap getGameMap(){
         return map;
+    }
+
+    public Trophy getTrophy() {
+        return championsTrophy;
     }
 
 }

@@ -5,3 +5,4 @@ Feature: Game
         When game initializes
         Then character is created
         And Map created
+        And Trophy created

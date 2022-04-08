@@ -37,6 +37,12 @@ public class InitDef {
     public void thenMapGenerated(){
        assertNotNull(gc.getGameMap());
     }
+
+    @And ("Trophy created")
+    public void thenTrophyCreated(){
+        assertNotNull(gc.getTrophy());
+    }
+        
 /*
     @And ("20 tiles have monsters")
     public void thenMonstersCreated(){
