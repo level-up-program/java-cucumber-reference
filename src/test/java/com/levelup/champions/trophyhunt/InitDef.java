@@ -1,11 +1,11 @@
 package com.levelup.champions.trophyhunt;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import com.levelup.champions.trophyhunt.GameController;
 import com.levelup.champions.trophyhunt.GameStatus;
-import com.levelup.champions.trophyhunt.PlayerCharacter;
-
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -29,15 +29,15 @@ public class InitDef {
     
     @Then ("character is created")
     public void thenCharacterIsCreated(){
-       //assert(gc.getPlayerCharacter().equals(new PlayerCharacter()));
-    }
-/*
-    @And ("Map is generated")
-    public void thenMapGenerated(){
-       //Map
-        // assert();
+        assertNotNull(gc.getPlayerCharacter());
+        //assert(gc.getPlayerCharacter().equals(new PlayerCharacter()));
     }
 
+    @And ("Map created")
+    public void thenMapGenerated(){
+       assertNotNull(gc.getGameMap());
+    }
+/*
     @And ("20 tiles have monsters")
     public void thenMonstersCreated(){
         // Monster
