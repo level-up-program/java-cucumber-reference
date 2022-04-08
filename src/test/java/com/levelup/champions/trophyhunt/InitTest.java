@@ -1,6 +1,7 @@
 package com.levelup.champions.trophyhunt;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -18,12 +19,26 @@ public class InitTest {
 
     @Test
     public void characterInitializationTest(){
-        assertTrue(true);
+        
+        // arrange
+        int x_pos;
+        int y_pos;
+        int x_expectedResult = 0;
+        int y_expectedResult = 0;
+        PlayerCharacter p = new PlayerCharacter();
+        
+         //act
+         x_pos = p.getx();
+         y_pos = p.gety();
+         
+         //assert
+         assertTrue(x_pos == x_expectedResult);
+         assertTrue(y_pos == y_expectedResult);
     }
 
       @Test
     public void whenGameInititalizes(){
-      assertTrue(true);
+      //fail();
     } 
     
 }

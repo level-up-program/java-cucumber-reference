@@ -6,3 +6,4 @@ Feature: Game
         Then character is created
         And Map created
         And Trophy created
+        
