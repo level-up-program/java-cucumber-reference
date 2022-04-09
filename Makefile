@@ -5,10 +5,7 @@ help:
 	echo "Primary goals are build, run, test, verify. 'make run' to execute"
 
 bootstrap:
-	echo "'Bootstrap' not implemented"
-
-setup:
-	echo "'Setup' not implemented"
+	echo "'Bootstrap' currently has not steps"
 
 run: update
 	./gradlew run
