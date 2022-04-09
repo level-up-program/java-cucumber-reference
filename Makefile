@@ -28,6 +28,6 @@ verify: stagetests
 	./gradlew cucumberCli
 
 stagetests:
-	cp -R src/test/resources/images target/images
+	cp -R src/test/resources/images output/images
 
 cibuild: test verify build

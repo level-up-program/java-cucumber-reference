@@ -2,7 +2,7 @@ name: Makefile CI
 
 on:
   push:
-    branches: [ workspace/group-2 ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -17,3 +17,10 @@ jobs:
       
     - name: Run tests and CI build
       run: make cibuild
+
+    - name: Publish Tests
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./output
