@@ -4,7 +4,7 @@ plugins {
 	id 'java'
 }
 
-group = 'com.levelup.champions'
+group = 'com.levelup.forestsandmonsters'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
@@ -39,7 +39,7 @@ task cucumberCli() {
             args = [
               '--plugin', 'pretty',
               '--plugin', 'html:target/cucumber-report.html', 
-              '--glue', 'com.levelup.champions', 
+              '--glue', 'com.levelup.forestsandmonsters', 
               'src/test/resources']
         }
     }

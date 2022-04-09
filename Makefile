@@ -1,5 +1,8 @@
 .PHONY: bootstrap setup update run console clean build test cibuild
-.DEFAULT_GOAL := bootstrap
+.DEFAULT_GOAL := help
+
+help:
+	echo "Primary goals are build, run, test, verify. 'make run' to execute"
 
 bootstrap:
 	echo "'Bootstrap' not implemented"
@@ -7,14 +10,8 @@ bootstrap:
 setup:
 	echo "'Setup' not implemented"
 
-update: bootstrap
-	echo "'Update' not implemented"
-
 run: update
-		./gradlew run
-
-console:
-	echo "'Console' not implemented"
+	./gradlew run
 
 clean:
 	./gradlew clean
@@ -22,8 +19,15 @@ clean:
 build: test
 	./gradlew build
 
-test: clean update
+test: 
+	echo "Running unit tests"
 	./gradlew test
 
-cibuild: test
-	./gradlew build
+verify: stagetests
+	echo "Running cucumber tests"
+	./gradlew cucumberCli
+
+stagetests:
+	cp -R src/test/resources/images target/images
+
+cibuild: test verify build
