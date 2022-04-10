@@ -3,10 +3,10 @@ package com.levelup.forestsandmonsters;
 import java.awt.Point;
 
 public class GameController {
-
+    static final String DEFAULT_PLAYER_NAME = "Player";
     public class GameStatus {
         //TODO: Add status data
-        public String PlayerName = "";
+        public String playerName = "";
     }
 
     GameStatus status;
@@ -20,11 +20,15 @@ public class GameController {
     }
 
     public void createPlayer(String playerName) {
-        //TODO: Create player
+        if(playerName != null && !playerName.equals("")){
+            status.playerName = playerName;
+        }
+        else {
+            status.playerName = DEFAULT_PLAYER_NAME;
+        }
     }
 
     public GameStatus getStatus() {
-        //TODO: Return status
         return this.status;
     }
 
