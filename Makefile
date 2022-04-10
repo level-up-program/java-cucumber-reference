@@ -7,7 +7,7 @@ help:
 bootstrap:
 	echo "'Bootstrap' currently has not steps"
 
-run: update
+run: 
 	./gradlew run
 
 clean:
