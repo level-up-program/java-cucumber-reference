@@ -16,7 +16,7 @@ clean:
 build: test
 	./gradlew build
 
-test: 
+test: clean
 	echo "Running unit tests"
 	./gradlew test
 
@@ -25,6 +25,7 @@ verify: stagetests
 	./gradlew cucumberCli
 
 stagetests:
+	mkdir -p ./output
 	cp -R src/test/resources/images output/images
 
 cibuild: test verify build
