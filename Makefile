@@ -24,6 +24,8 @@ verify: stagetests
 	echo "Running cucumber tests"
 	./gradlew cucumberCli
 
+all-tests: test verify
+
 stagetests:
 	mkdir -p ./output
 	cp -R src/test/resources/images output
