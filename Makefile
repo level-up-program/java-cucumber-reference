@@ -26,6 +26,6 @@ verify: stagetests
 
 stagetests:
 	mkdir -p ./output
-	cp -R src/test/resources/images output/images
+	cp -R src/test/resources/images output
 
 cibuild: test verify build
