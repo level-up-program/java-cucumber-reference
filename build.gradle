@@ -48,6 +48,12 @@ task cucumberCli() {
     }
 }
 
+test {
+testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+    }
+}
+
 apply plugin : "java" 
 application {
   mainClass.set("com.levelup.forestsandmonsters.cli.ForestsAndMonsters")
