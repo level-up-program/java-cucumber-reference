@@ -14,7 +14,7 @@ clean:
 	./gradlew clean
 
 build: test
-	./gradlew build
+	./gradlew build -x test
 
 test: clean
 	echo "Running unit tests"
@@ -31,3 +31,9 @@ stagetests:
 	cp -R src/test/resources/images output
 
 cibuild: test verify build
+
+package:
+	./gradlew assemble
+
+execute:
+	java -jar ./build/libs/LevelUpGame-0.0.1-SNAPSHOT.jar

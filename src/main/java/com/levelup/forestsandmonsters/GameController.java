@@ -3,9 +3,10 @@ package com.levelup.forestsandmonsters;
 import java.awt.Point;
 
 public class GameController {
+    //TODO: If your stakeholder wants to call this CHARACTER, change var name for low representational gap
     static final String DEFAULT_PLAYER_NAME = "Player";
     public class GameStatus {
-        //TODO: Add status data
+        //TODO: Add other status data
         public String playerName = "";
     }
 
@@ -15,7 +16,7 @@ public class GameController {
         status = new GameStatus();
     }
 
-    public enum DIRECTION { 
+    public static enum DIRECTION { 
         NORTH, SOUTH, EAST, WEST
     }
 
