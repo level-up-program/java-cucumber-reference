@@ -23,7 +23,7 @@ public class LevelUpGame implements Quit.Command {
       this.gameHistory = new ArrayList<GameStatus>();
   }
 
-	@ShellMethod(value="Create a character",key={"create-character","create"})
+	@ShellMethod(value="Create a character (characterName)",key={"create-character","create"})
     public void createCharacter(@ShellOption(defaultValue="Player") String characterName)
 	{
       gameController.createPlayer(characterName);
