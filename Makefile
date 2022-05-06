@@ -7,8 +7,8 @@ help:
 bootstrap:
 	echo "'Bootstrap' currently has not steps"
 
-run: 
-	./gradlew run
+run: build
+	java -jar ./build/libs/LevelUpGame-0.0.1-SNAPSHOT.jar
 
 clean:
 	./gradlew clean
@@ -34,6 +34,3 @@ cibuild: test verify build
 
 package:
 	./gradlew assemble
-
-execute:
-	java -jar ./build/libs/LevelUpGame-0.0.1-SNAPSHOT.jar
