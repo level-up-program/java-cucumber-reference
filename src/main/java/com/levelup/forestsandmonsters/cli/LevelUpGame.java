@@ -6,8 +6,10 @@ import java.util.List;
 import com.levelup.forestsandmonsters.GameController;
 import com.levelup.forestsandmonsters.GameController.GameStatus;
 
+import org.springframework.shell.Availability;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
+import org.springframework.shell.standard.ShellMethodAvailability;
 import org.springframework.shell.standard.ShellOption;
 import org.springframework.shell.standard.commands.Quit;
 
@@ -16,6 +18,7 @@ public class LevelUpGame implements Quit.Command {
   
   private final GameController gameController;
   private List<GameStatus> gameHistory;
+  private boolean isGameStarted = false;
   
   public LevelUpGame() {
       super();
@@ -35,32 +38,43 @@ public class LevelUpGame implements Quit.Command {
   @ShellMethod("Start the game")
     public void startGame()
   {
+    isGameStarted = true;
     System.out.println("Welcome to Forests and Monsters! You have entered a mysterious place.");
     System.out.println("Would you like to go North(N), South(S), East(E), West(W) or Exit(X)?");
   }
 
-  @ShellMethod(value="Move North",key={"N","n"})
+  public Availability startedCheck() {
+    return isGameStarted
+    ? Availability.available()
+    : Availability.unavailable("game not started");
+ }
+
+  @ShellMethod(value="Move North",key={"N","n"},group = "Move")
+  @ShellMethodAvailability("startedCheck")
   public void moveNorth()
   {
     gameController.move(GameController.DIRECTION.NORTH);
     updateStatus(gameController.getStatus());
   }
 
-  @ShellMethod(value="Move South",key={"S","s"})
+  @ShellMethod(value="Move South",key={"S","s"},group = "Move")
+  @ShellMethodAvailability("startedCheck")
   public void moveSouth()
   {
     gameController.move(GameController.DIRECTION.SOUTH);
     updateStatus(gameController.getStatus());
   }
 
-  @ShellMethod(value="Move East",key={"E","e"})
+  @ShellMethod(value="Move East",key={"E","e"},group = "Move")
+  @ShellMethodAvailability("startedCheck")
   public void moveEast()
   {
     gameController.move(GameController.DIRECTION.EAST);
     updateStatus(gameController.getStatus());
   }
 
-  @ShellMethod(value="Move West",key={"W","w"})
+  @ShellMethod(value="Move West",key={"W","w"},group = "Move")
+  @ShellMethodAvailability("startedCheck")
   public void moveWest()
   {
     gameController.move(GameController.DIRECTION.WEST);
