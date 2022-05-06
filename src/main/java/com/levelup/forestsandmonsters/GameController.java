@@ -16,10 +16,12 @@ public class GameController {
         status = new GameStatus();
     }
 
+    //TODO: Ensure this AND CLI commands match domain model
     public static enum DIRECTION { 
         NORTH, SOUTH, EAST, WEST
     }
 
+    //Pre-implemented to demonstrate ATDD
     public void createPlayer(String playerName) {
         if(playerName != null && !playerName.equals("")){
             status.playerName = playerName;
