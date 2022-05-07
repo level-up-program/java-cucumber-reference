@@ -22,6 +22,7 @@ public class GameController {
     }
 
     //Pre-implemented to demonstrate ATDD
+    //TODO: Update this if it does not match your design
     public void createPlayer(String playerName) {
         if(playerName != null && !playerName.equals("")){
             status.playerName = playerName;

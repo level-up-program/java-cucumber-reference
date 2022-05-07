@@ -10,7 +10,7 @@ public class LevelUpPrompt implements PromptProvider {
     @Override
     public AttributedString getPrompt() {
             return new AttributedString(
-                    "LevelUp" + "==> ",
+                    "Enter command" + "==> ",
                     AttributedStyle.DEFAULT.background(AttributedStyle.GREEN));
     }
 }

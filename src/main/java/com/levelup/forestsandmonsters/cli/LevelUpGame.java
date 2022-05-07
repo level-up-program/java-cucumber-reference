@@ -26,6 +26,7 @@ public class LevelUpGame implements Quit.Command {
       this.gameHistory = new ArrayList<GameStatus>();
   }
 
+  @ShellMethodAvailability("notStartedCheck")
 	@ShellMethod(value="Create a character (characterName)",key={"create-character","create"})
     public void createCharacter(@ShellOption(defaultValue="Player") String characterName)
 	{
@@ -35,6 +36,7 @@ public class LevelUpGame implements Quit.Command {
       System.out.println("Your character, " + status.playerName + " is created!");
 	}
 
+  @ShellMethodAvailability("notStartedCheck")
   @ShellMethod("Start the game")
     public void startGame()
   {
@@ -48,6 +50,12 @@ public class LevelUpGame implements Quit.Command {
     ? Availability.available()
     : Availability.unavailable("game not started");
  }
+
+ public Availability notStartedCheck() {
+  return !isGameStarted
+  ? Availability.available()
+  : Availability.unavailable("game already started");
+}
 
   @ShellMethod(value="Move North",key={"N","n"},group = "Move")
   @ShellMethodAvailability("startedCheck")
@@ -81,7 +89,7 @@ public class LevelUpGame implements Quit.Command {
     updateStatus(gameController.getStatus());
   }
 
-  @ShellMethod(value="End the game",key={"X","x","end","q","quit","exit"})
+  @ShellMethod(value="End the game",key={"X","x"})
   public void quit() 
   {
     printSummary();
