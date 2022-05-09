@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class GameControllerTest {
     @Test
-    public void InitializationCreatesResults(){
+    public void InitializationCreatesResults() {
         GameController testObj = new GameController();
         assertNotNull(testObj.status);
     }

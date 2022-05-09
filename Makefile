@@ -7,27 +7,28 @@ help:
 bootstrap:
 	echo "'Bootstrap' currently has not steps"
 
-run: 
-	./gradlew run
+run: build
+	java -jar ./build/libs/LevelUpGame-0.0.1-SNAPSHOT.jar
 
 clean:
 	./gradlew clean
 
-build: test
-	./gradlew build
+build: clean
+	./gradlew build -x test
 
-test: clean
+test: 
 	echo "Running unit tests"
 	./gradlew test
 
-verify: stagetests
+verify: 
 	echo "Running cucumber tests"
 	./gradlew cucumberCli
-
-all-tests: test verify
-
-stagetests:
 	mkdir -p ./output
 	cp -R src/test/resources/images output
 
-cibuild: test verify build
+all-tests: test verify
+
+cibuild: build all-tests
+	
+package:
+	./gradlew assemble
