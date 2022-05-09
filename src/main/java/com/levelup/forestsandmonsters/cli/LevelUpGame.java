@@ -29,7 +29,7 @@ public class LevelUpGame implements Quit.Command {
   @ShellMethodAvailability("notStartedCheck")
   @ShellMethod(value = "Create a character (characterName)", key = { "create-character", "create" })
   public void createCharacter(@ShellOption(defaultValue = "Player") String characterName) {
-    gameController.createPlayer(characterName);
+    gameController.createCharacter(characterName);
     GameStatus status = gameController.getStatus();
 
     System.out.println("Your character, " + status.playerName + " is created!");
@@ -39,6 +39,9 @@ public class LevelUpGame implements Quit.Command {
   @ShellMethod("Start the game")
   public void startGame() {
     isGameStarted = true;
+    gameController.startGame();
+    // TODO: Update this prompt. Also, do you want to get the game status and tell
+    // the player where their character is?
     System.out.println("Welcome to Forests and Monsters! You have entered a mysterious place.");
     System.out.println("Would you like to go North(N), South(S), East(E), West(W) or Exit(X)?");
   }
@@ -73,6 +76,7 @@ public class LevelUpGame implements Quit.Command {
 
   @ShellMethod(value = "End the game", key = { "X", "x" })
   public void quit() {
+    System.out.println("You exit the mysterious world.");
     printSummary();
     System.exit(0);
   }
@@ -82,9 +86,8 @@ public class LevelUpGame implements Quit.Command {
     for (GameStatus status : gameHistory) {
       // TODO: Override toString on game status to print pretty
       System.out.println(status);
-
-      // TODO: Print anything else you committed to in your mockup
     }
+    // TODO: Print anything else you committed to in your mockup
   }
 
   private void updateStatus(GameStatus status) {
