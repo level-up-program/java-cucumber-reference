@@ -20,7 +20,7 @@ public class GameSteps {
     @When("the player sets their name")
     public void whenThePlayerSetsTheirName() {
         gc = new GameController();
-        gc.createPlayer(playerName);
+        gc.createCharacter(playerName);
     }
 
     @Then("the Game sets the player's name to {string}")
