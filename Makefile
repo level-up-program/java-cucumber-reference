@@ -13,24 +13,22 @@ run: build
 clean:
 	./gradlew clean
 
-build: test
+build: clean
 	./gradlew build -x test
 
-test: clean
+test: 
 	echo "Running unit tests"
 	./gradlew test
 
-verify: stagetests
+verify: 
 	echo "Running cucumber tests"
 	./gradlew cucumberCli
-
-all-tests: test verify
-
-stagetests:
 	mkdir -p ./output
 	cp -R src/test/resources/images output
 
-cibuild: test verify build
+all-tests: test verify
 
+cibuild: build all-tests
+	
 package:
 	./gradlew assemble
