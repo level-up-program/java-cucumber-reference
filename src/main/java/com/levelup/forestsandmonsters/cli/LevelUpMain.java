@@ -7,8 +7,9 @@ import org.springframework.util.StringUtils;
 @SpringBootApplication
 public class LevelUpMain {
     public static void main(String[] args) {
-        String[] disabledCommands = {"--spring.shell.command.stacktrace.enabled=false","--spring.shell.command.history.enabled=false","--spring.shell.command.script.enabled=false"}; 
-        String[] fullArgs = StringUtils.concatenateStringArrays(args, disabledCommands);
+        String[] disabledCommandsWeDoNotNeed = { "--spring.shell.command.stacktrace.enabled=false",
+                "--spring.shell.command.history.enabled=false", "--spring.shell.command.script.enabled=false" };
+        String[] fullArgs = StringUtils.concatenateStringArrays(args, disabledCommandsWeDoNotNeed);
         SpringApplication.run(LevelUpMain.class, fullArgs);
     }
 }

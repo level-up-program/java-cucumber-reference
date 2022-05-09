@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 public class LevelUpPrompt implements PromptProvider {
     @Override
     public AttributedString getPrompt() {
-            return new AttributedString(
-                    "Enter command" + "==> ",
-                    AttributedStyle.DEFAULT.background(AttributedStyle.GREEN));
+        return new AttributedString(
+                "Enter command" + "==> ",
+                AttributedStyle.DEFAULT.background(AttributedStyle.GREEN));
     }
 }

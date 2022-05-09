@@ -1,5 +1,5 @@
 Feature: ForestsAndMonsters
-![Gamer](images/gamerErin.png)
+    ![Gamer](images/gamerErin.png)
     I want to create a new custom character, setting their name
 
     Scenario Outline:: Set player name
@@ -7,7 +7,7 @@ Feature: ForestsAndMonsters
         When the player sets their name
         Then the Game sets the player's name to <playerNameOutput>
         Examples:
-            | playerNameInput | playerNameOutput |  
+            | playerNameInput | playerNameOutput |
             | "Erin"          | "Erin"           |
             | ""              | "Player"         |
-        
+
