@@ -18,13 +18,13 @@ jobs:
     - name: Run tests and CI build
       run: make cibuild
 
-    - name: JUnit Test Summary
+    - name: Test Summary
       uses: test-summary/action@v1
       with:
-        paths: "./build/levelup-results/**/TEST-*.xml"
+        paths: "./build/levelup-results/test/TEST-*.xml"
       if: always()
 
-    - name: Upload JUnit Test Summary
+    - name: Upload Test Summary
       uses: actions/upload-artifact@v3
       with:
         name: test-summary
