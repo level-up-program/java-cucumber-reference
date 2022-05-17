@@ -21,7 +21,8 @@ jobs:
     - name: JUnit Test Summary
       uses: test-summary/action@v1
       with:
-        paths: "build/levelup-results/**/TEST-*.xml"
+        paths: "./build/levelup-results/**/TEST-*.xml"
+      if: always()
 
     - name: Publish Tests
       uses: peaceiris/actions-gh-pages@v3
