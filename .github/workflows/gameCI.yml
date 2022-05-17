@@ -18,6 +18,11 @@ jobs:
     - name: Run tests and CI build
       run: make cibuild
 
+    - name: Test Summary
+      uses: test-summary/action@v1
+      with:
+        paths: "build/levelup-results/**/TEST-*.xml"
+
     - name: Publish Tests
       uses: peaceiris/actions-gh-pages@v3
       with:
