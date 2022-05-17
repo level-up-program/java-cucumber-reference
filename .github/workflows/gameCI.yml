@@ -18,7 +18,7 @@ jobs:
     - name: Run tests and CI build
       run: make cibuild
 
-    - name: Test Summary
+    - name: JUnit Test Summary
       uses: test-summary/action@v1
       with:
         paths: "build/levelup-results/**/TEST-*.xml"
