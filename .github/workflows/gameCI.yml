@@ -24,6 +24,13 @@ jobs:
         paths: "./build/levelup-results/**/TEST-*.xml"
       if: always()
 
+    - name: Upload JUnit Test Summary
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-summary
+        path: test-summary.md
+      if: always()
+
     - name: Publish Tests
       uses: peaceiris/actions-gh-pages@v3
       with:
