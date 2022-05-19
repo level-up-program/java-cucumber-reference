@@ -4,31 +4,31 @@
 help:
 	echo "Primary goals are build, run, test, verify. 'make run' to execute"
 
-bootstrap:
-	echo "'Bootstrap' currently has not steps"
-
-run: build
-	java -jar ./build/libs/LevelUpGame-0.0.1-SNAPSHOT.jar
-
 clean:
 	./gradlew clean
 
+bootstrap:
+	echo "'Bootstrap' currently has not steps"
+
 build: clean
 	./gradlew build -x test
+	
+package:
+	./gradlew assemble
 
 test: 
 	echo "Running unit tests"
 	./gradlew test
 
-verify: 
+test-acceptance: 
 	echo "Running cucumber tests"
 	./gradlew cucumberCli
 	mkdir -p ./output
 	cp -R src/test/resources/images output
 
-all-tests: test verify
+test-all: test test-acceptance
 
-cibuild: build all-tests
-	
-package:
-	./gradlew assemble
+cibuild: build test-all
+
+run: build
+	java -jar ./build/libs/LevelUpGame-0.0.1-SNAPSHOT.jar
