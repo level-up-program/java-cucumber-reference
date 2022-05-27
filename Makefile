@@ -12,6 +12,7 @@ run: build
 
 clean:
 	./gradlew clean
+	rm -rf levelup-reports
 
 build: clean
 	./gradlew build -x test
