@@ -10,6 +10,7 @@ public class GameController {
     public class GameStatus {
         // TODO: Add other status data
         public String playerName = DEFAULT_PLAYER_NAME;
+        public Point currentPosition = null;
     }
 
     GameStatus status;
@@ -46,6 +47,10 @@ public class GameController {
     public void move(DIRECTION directionToMove) {
         // TODO: Implement move - should call something on another class
         // TODO: Should probably also update the game results
+    }
+
+    public void setCharacterPosition(Point coordinates) {
+        // TODO: IMPLEMENT THIS TO SET CHARACTERS CURRENT POSITION -- exists to be testable
     }
 
 }
