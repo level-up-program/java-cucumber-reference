@@ -20,7 +20,7 @@ test:
 	echo "Running unit tests"
 	./gradlew test
 
-verify: 
+test-acceptance: 
 	echo "Running cucumber tests"
 	./gradlew cucumberCli
 	mkdir -p ./output
