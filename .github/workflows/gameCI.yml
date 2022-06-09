@@ -19,7 +19,7 @@ jobs:
       run: make cibuild
 
     - name: Cache test output
-    - uses: actions/cache@v3
+      uses: actions/cache@v3
       with:
         path: ./output
         key: test-output-dir
@@ -31,7 +31,7 @@ jobs:
     steps:
 
     - name: Fetch cache test output
-    - uses: actions/cache@v3
+      uses: actions/cache@v3
       with:
         path: ./output
         key: test-output-dir
