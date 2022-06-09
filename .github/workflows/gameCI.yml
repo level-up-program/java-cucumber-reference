@@ -33,9 +33,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ./output
-        key: ${{ runner.os }}-gradle-${{ hashFiles('./output/index.html') }}-test-output-dir
-        restore-keys: |
-          ${{ runner.os }}-gradle-
+        key: ${{ runner.os }}-${{ hashFiles('./output/index.html') }}-test-output-dir
   
   publish-tests:
     needs: acceptance-test
@@ -49,9 +47,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ./output
-        key: ${{ runner.os }}-gradle-${{ hashFiles('./output/index.html') }}-test-output-dir
-        restore-keys: |
-          ${{ runner.os }}-gradle-
+        key: ${{ runner.os }}-${{ hashFiles('./output/index.html') }}-test-output-dir
 
     - name: Publish Tests
       uses: peaceiris/actions-gh-pages@v3
