@@ -4,17 +4,18 @@
 help:
 	echo "Primary goals are build, run, test, verify. 'make run' to execute"
 
+clean:
+	./gradlew clean
+	rm -rf levelup-reports
+
 bootstrap:
 	echo "'Bootstrap' currently has not steps"
 
-run: build
-	java -jar ./build/libs/LevelUpGame-0.0.1-SNAPSHOT.jar
-
-clean:
-	./gradlew clean
-
 build: clean
 	./gradlew build -x test
+	
+package:
+	./gradlew assemble
 
 test: 
 	echo "Running unit tests"
@@ -26,9 +27,7 @@ test-acceptance:
 	mkdir -p ./output
 	cp -R src/test/resources/images output
 
-all-tests: test verify
+test-all: test test-acceptance
 
-cibuild: build all-tests
-	
-package:
-	./gradlew assemble
+run: build
+	java -jar ./build/libs/LevelUpGame-0.0.1-SNAPSHOT.jar

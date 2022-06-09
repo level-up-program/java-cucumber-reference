@@ -44,6 +44,16 @@ task cucumberCli() {
     }
 }
 
+reporting.baseDir = "levelup-reports"
+testResultsDirName = "$buildDir/levelup-results"
+
+tasks.register('showDirs') {
+    doLast {
+        logger.quiet(rootDir.toPath().relativize(project.reportsDir.toPath()).toString())
+        logger.quiet(rootDir.toPath().relativize(project.testResultsDir.toPath()).toString())
+    }
+}
+
 test {
 testLogging {
         events "passed", "skipped", "failed", "standardOut", "standardError"
