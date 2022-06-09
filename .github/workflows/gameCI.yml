@@ -18,18 +18,22 @@ jobs:
     - name: Run tests and CI build
       run: make cibuild
 
-    - name: Test Summary
-      uses: test-summary/action@v1
-      with:
-        paths: "./build/levelup-results/test/TEST-*.xml"
-      if: always()
+    - name: Cache test output
+    - uses: actions/cache@v3
+        with:
+          path: ./output
+          key: test-output-dir
+  
+  publish-tests:
 
-    - name: Upload Test Summary
-      uses: actions/upload-artifact@v3
-      with:
-        name: test-summary
-        path: test-summary.md
-      if: always()
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Fetch cache test output
+    - uses: actions/cache@v3
+        with:
+          path: ./output
+          key: test-output-dir
 
     - name: Publish Tests
       uses: peaceiris/actions-gh-pages@v3
