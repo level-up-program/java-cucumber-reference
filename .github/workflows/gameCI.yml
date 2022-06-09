@@ -5,8 +5,7 @@ on:
     branches: [ main, develop ]
 
 jobs:
-  build:
-
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,20 +15,39 @@ jobs:
       run: make bootstrap
       
     - name: Run tests and CI build
-      run: make cibuild
+      run: make test
+  
+  acceptance-test:
+    runs-on: ubuntu-latest
 
-    - name: Test Summary
-      uses: test-summary/action@v1
-      with:
-        paths: "./build/levelup-results/test/TEST-*.xml"
-      if: always()
+    steps:
+    - uses: actions/checkout@v3
 
-    - name: Upload Test Summary
-      uses: actions/upload-artifact@v3
+    - name: Install dependencies
+      run: make bootstrap
+      
+    - name: Run acceptance tests
+      run: make test-acceptance
+
+    - name: Cache test output
+      uses: actions/cache@v3
       with:
-        name: test-summary
-        path: test-summary.md
-      if: always()
+        path: ./output
+        key: test-output-dir-${{ runner.os }}-${{ github.sha }}
+  
+  publish-tests:
+    needs: acceptance-test
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Fetch cache test output
+      uses: actions/cache@v3
+      with:
+        path: ./output
+        key: test-output-dir-${{ runner.os }}-${{ github.sha }}
 
     - name: Publish Tests
       uses: peaceiris/actions-gh-pages@v3
