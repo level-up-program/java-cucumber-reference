@@ -33,7 +33,9 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ./output
-        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}-test-output-dir
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/gradle-wrapper.properties') }}-test-output-dir
+        restore-keys: |
+          ${{ runner.os }}-gradle-
   
   publish-tests:
     needs: acceptance-test
@@ -42,12 +44,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Fetch cache test output
       uses: actions/cache@v3
       with:
         path: ./output
-        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}-test-output-dir
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/gradle-wrapper.properties') }}-test-output-dir
+        restore-keys: |
+          ${{ runner.os }}-gradle-
 
     - name: Publish Tests
       uses: peaceiris/actions-gh-pages@v3
