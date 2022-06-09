@@ -20,20 +20,21 @@ jobs:
 
     - name: Cache test output
     - uses: actions/cache@v3
-        with:
-          path: ./output
-          key: test-output-dir
+      with:
+        path: ./output
+        key: test-output-dir
   
   publish-tests:
 
     runs-on: ubuntu-latest
 
     steps:
+
     - name: Fetch cache test output
     - uses: actions/cache@v3
-        with:
-          path: ./output
-          key: test-output-dir
+      with:
+        path: ./output
+        key: test-output-dir
 
     - name: Publish Tests
       uses: peaceiris/actions-gh-pages@v3
