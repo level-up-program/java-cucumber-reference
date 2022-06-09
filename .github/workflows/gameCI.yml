@@ -34,8 +34,6 @@ jobs:
       with:
         path: ./output
         key: test-output-dir-${{ runner.os }}-${{ hashFiles('./output/index.html') }}
-        restore-keys: |
-          test-output-dir-${{ runner.os }}-
   
   publish-tests:
     needs: acceptance-test
@@ -49,7 +47,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ./output
-        key: test-output-dir-${{ runner.os }}-${{ hashFiles('./output/index.html') }}
+        key: test-output-dir-${{ runner.os }}-
         restore-keys: |
           test-output-dir-${{ runner.os }}-
 
