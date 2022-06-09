@@ -37,6 +37,7 @@ jobs:
   
   publish-tests:
     needs: acceptance-test
+    if: ${{ always() }}
     runs-on: ubuntu-latest
 
     steps:
