@@ -22,7 +22,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ./output
-        key: test-output-dir
+        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}-test-output-dir
   
   publish-tests:
     needs: build
@@ -34,7 +34,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ./output
-        key: test-output-dir
+        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}-test-output-dir
 
     - name: Publish Tests
       uses: peaceiris/actions-gh-pages@v3
