@@ -41,6 +41,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v3
+    
     - name: Fetch cache test output
       uses: actions/cache@v3
       with:
