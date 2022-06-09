@@ -6,7 +6,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -16,25 +15,36 @@ jobs:
       run: make bootstrap
       
     - name: Run tests and CI build
-      run: make cibuild
+      run: make test
+  
+  acceptance-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: make bootstrap
+      
+    - name: Run acceptance tests
+      run: make acceptance-test
 
     - name: Cache test output
       uses: actions/cache@v3
       with:
         path: ./output
-        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}-test-output-dir
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}-test-output-dir
   
   publish-tests:
-    needs: build
+    needs: acceptance-test
     runs-on: ubuntu-latest
 
     steps:
-
     - name: Fetch cache test output
       uses: actions/cache@v3
       with:
         path: ./output
-        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}-test-output-dir
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}-test-output-dir
 
     - name: Publish Tests
       uses: peaceiris/actions-gh-pages@v3
