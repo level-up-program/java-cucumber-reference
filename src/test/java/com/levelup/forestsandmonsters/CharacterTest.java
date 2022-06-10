@@ -10,6 +10,10 @@ public class CharacterTest {
     public void initializationSetsNameToDefaultWhenEmpty() {
         Character testObj = new Character();
         assertEquals(Character.DEFAULT_NAME, testObj.getName());
+        testObj = new Character("");
+        assertEquals(Character.DEFAULT_NAME, testObj.getName());
+        testObj = new Character("    ");
+        assertEquals(Character.DEFAULT_NAME, testObj.getName());
     }
 
     @Test

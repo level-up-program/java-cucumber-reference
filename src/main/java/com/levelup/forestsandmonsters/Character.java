@@ -15,7 +15,10 @@ public class Character {
     }
     
     public Character(String name) {
-        this.name = name;
+        if(name.trim().equals(""))
+            this.name = DEFAULT_NAME;
+        else
+            this.name = name;
     }
     
     public String getName() {

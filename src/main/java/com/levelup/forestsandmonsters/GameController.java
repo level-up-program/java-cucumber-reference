@@ -4,11 +4,12 @@ import java.awt.Point;
 
 public class GameController {
     Character character;
+    GameMap map;
 
     public class GameStatus {
         // TODO: Add other status data
-        public String characterName = "";
-        public Point currentPosition = null;
+        public String characterName;
+        public Point currentPosition;
     }
 
     GameStatus status;
@@ -25,13 +26,16 @@ public class GameController {
 
     public void createCharacter(String name) {
         this.character = new Character(name);
-        status.characterName = character.getName();
+        this.status.characterName = character.getName();
     }
 
     public void startGame() {
-        // TODO: Implement startGame - Should probably create tiles and put the player
-        // on them?
-        // TODO: Should also update the game results?
+        map = new GameMap();
+        if(character == null)
+        {
+            this.character = new Character();
+        }
+        character.enterMap(map);
     }
 
     public GameStatus getStatus() {
@@ -44,7 +48,11 @@ public class GameController {
     }
 
     public void setCharacterPosition(Point coordinates) {
-        // TODO: IMPLEMENT THIS TO SET CHARACTERS CURRENT POSITION -- exists to be testable
+        if(character == null)
+            this.character = new Character();
+        this.character.currentPosition = new Position(coordinates.x, coordinates.y);
+        this.status.characterName = this.character.name;
+        this.status.currentPosition = this.character.currentPosition.coordinates;
     }
 
 }

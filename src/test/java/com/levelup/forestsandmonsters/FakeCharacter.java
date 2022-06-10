@@ -13,4 +13,9 @@ public class FakeCharacter extends Character {
         this.currentPosition = STUBBED_NEW_POSITION;
     }
 
+
+    @Override
+    public void enterMap(GameMap m) {
+        this.currentPosition = STUBBED_NEW_POSITION;
+    }
 }

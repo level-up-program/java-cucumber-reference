@@ -29,4 +29,17 @@ public class GameControllerTest {
         assertEquals(mockCharacter.STUBBED_NEW_POSITION.coordinates, testObj.getStatus().currentPosition);
     }
 
+    @Test
+    public void startGameInitializesMapAndGivesToChracter() {
+        GameController testObj = new GameController();
+        FakeCharacter mockCharacter = new FakeCharacter();
+        testObj.character = mockCharacter;
+
+        testObj.startGame();
+
+        assertNotNull(testObj.map);
+        assertEquals(mockCharacter.STUBBED_NEW_POSITION, mockCharacter.currentPosition);
+
+    }
+
 }
