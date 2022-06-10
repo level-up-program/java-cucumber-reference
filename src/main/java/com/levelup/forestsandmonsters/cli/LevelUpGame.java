@@ -87,6 +87,7 @@ public class LevelUpGame implements Quit.Command {
     for (GameStatus status : gameHistory) {
       System.out.println(status);
     }
+    System.out.println("Number of moves taken:" + gameHistory.size());
   }
 
   private void updateStatus(GameStatus status) {
