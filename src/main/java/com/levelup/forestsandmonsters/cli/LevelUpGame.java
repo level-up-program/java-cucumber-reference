@@ -40,9 +40,10 @@ public class LevelUpGame implements Quit.Command {
   public void startGame() {
     isGameStarted = true;
     gameController.startGame();
-    // TODO: Update this prompt. Also, do you want to get the game status and tell
-    // the player where their character is?
+    GameStatus status = gameController.getStatus();
+    
     System.out.println("Welcome to Forests and Monsters! You have entered a mysterious place.");
+    System.out.println(status.characterName + " is on position " + status.currentPosition.x + "," + status.currentPosition.y);
     System.out.println("Would you like to go North(N), South(S), East(E), West(W) or Exit(X)?");
   }
 
@@ -92,6 +93,8 @@ public class LevelUpGame implements Quit.Command {
 
   private void updateStatus(GameStatus status) {
     this.gameHistory.add(status);
+    System.out
+        .println(status.characterName + " is on position " + status.currentPosition.x + "," + status.currentPosition.y);
   }
 
   public Availability startedCheck() {

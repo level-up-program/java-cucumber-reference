@@ -10,6 +10,11 @@ public class GameController {
         // TODO: Add other status data
         public String characterName;
         public Point currentPosition;
+
+        @Override
+        public String toString() {
+            return "Character " + characterName + " was on position " + currentPosition.x + "," + currentPosition.y;
+        }
     }
 
     GameStatus status;
@@ -36,6 +41,8 @@ public class GameController {
             this.character = new Character();
         }
         character.enterMap(map);
+        this.status.characterName = this.character.name;
+        this.status.currentPosition = this.character.getPosition().coordinates;
     }
 
     public GameStatus getStatus() {
