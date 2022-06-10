@@ -32,7 +32,7 @@ public class LevelUpGame implements Quit.Command {
     gameController.createCharacter(characterName);
     GameStatus status = gameController.getStatus();
 
-    System.out.println("Your character, " + status.playerName + " is created!");
+    System.out.println("Your character, " + status.characterName + " is created!");
   }
 
   @ShellMethodAvailability("notStartedCheck")

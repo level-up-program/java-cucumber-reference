@@ -3,13 +3,11 @@ package com.levelup.forestsandmonsters;
 import java.awt.Point;
 
 public class GameController {
-    // TODO: If your stakeholder wants to call this CHARACTER, change var name for
-    // low representational gap
-    static final String DEFAULT_PLAYER_NAME = "Player";
+    Character character;
 
     public class GameStatus {
         // TODO: Add other status data
-        public String playerName = DEFAULT_PLAYER_NAME;
+        public String characterName = "";
         public Point currentPosition = null;
     }
 
@@ -24,14 +22,10 @@ public class GameController {
         NORTH, SOUTH, EAST, WEST
     }
 
-    // Pre-implemented to demonstrate ATDD
-    // TODO: Update this if it does not match your design
+
     public void createCharacter(String name) {
-        if (name != null && !name.equals("")) {
-            status.playerName = name;
-        } else {
-            status.playerName = DEFAULT_PLAYER_NAME;
-        }
+        this.character = new Character(name);
+        status.characterName = character.getName();
     }
 
     public void startGame() {
@@ -45,8 +39,8 @@ public class GameController {
     }
 
     public void move(DIRECTION directionToMove) {
-        // TODO: Implement move - should call something on another class
-        // TODO: Should probably also update the game results
+        character.move(directionToMove);
+        this.status.currentPosition = character.getPosition().coordinates;
     }
 
     public void setCharacterPosition(Point coordinates) {
