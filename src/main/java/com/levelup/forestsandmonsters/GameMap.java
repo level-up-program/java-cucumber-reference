@@ -6,6 +6,7 @@ import java.awt.Point;
 public class GameMap {
 
     Position[][] positions;
+    public final Position startingPosition = new Position(0,0);
 
     public GameMap() {
         positions = new Position[10][10];
