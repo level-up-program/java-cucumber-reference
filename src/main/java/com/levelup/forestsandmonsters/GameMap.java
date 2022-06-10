@@ -7,6 +7,7 @@ public class GameMap {
 
     Position[][] positions;
     public final Position startingPosition = new Position(0,0);
+    public final int numPositions = 100;
 
     public GameMap() {
         positions = new Position[10][10];
@@ -56,6 +57,10 @@ public class GameMap {
             return false;
         else 
             return true;
+    }
+
+    public int getTotalPositions() {
+        return numPositions;
     }
 
 }

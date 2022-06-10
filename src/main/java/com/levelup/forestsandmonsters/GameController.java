@@ -57,12 +57,18 @@ public class GameController {
         this.status.currentPosition = character.getPosition().coordinates;
     }
 
+    //Exists for testability. Is not a system operation.
     public void setCharacterPosition(Point coordinates) {
         if(character == null)
             this.character = new Character();
         this.character.currentPosition = new Position(coordinates.x, coordinates.y);
         this.status.characterName = this.character.name;
         this.status.currentPosition = this.character.currentPosition.coordinates;
+    }
+
+    // Exists for testability. Is not a system operation.
+    public int getTotalPositions() {
+        return this.map.getTotalPositions();
     }
 
 }
