@@ -5,11 +5,11 @@ import java.awt.Point;
 public class GameController {
     // TODO: If your stakeholder wants to call this CHARACTER, change var name for
     // low representational gap
-    static final String DEFAULT_PLAYER_NAME = "Player";
+    static final String DEFAULT_CHARACTER_NAME = "Character";
 
     public class GameStatus {
         // TODO: Add other status data
-        public String playerName = DEFAULT_PLAYER_NAME;
+        public String characterName = DEFAULT_CHARACTER_NAME;
     }
 
     GameStatus status;
@@ -27,14 +27,14 @@ public class GameController {
     // TODO: Update this if it does not match your design
     public void createCharacter(String name) {
         if (name != null && !name.equals("")) {
-            status.playerName = name;
+            status.characterName = name;
         } else {
-            status.playerName = DEFAULT_PLAYER_NAME;
+            status.characterName = DEFAULT_CHARACTER_NAME;
         }
     }
 
     public void startGame() {
-        // TODO: Implement startGame - Should probably create tiles and put the player
+        // TODO: Implement startGame - Should probably create tiles and put the character
         // on them?
         // TODO: Should also update the game results?
     }
