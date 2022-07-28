@@ -7,8 +7,6 @@ import org.junit.Test;
 
 import com.levelup.forestsandmonsters.GameController.DIRECTION;
 
-import net.bytebuddy.dynamic.scaffold.MethodGraph.Compiler.Default.Merger.Directional;
-
 public class GameControllerTest {
     @Test
     public void initializationCreatesResults() {
