@@ -23,9 +23,9 @@ test:
 
 test-acceptance: 
 	echo "Running cucumber tests"
-	./gradlew cucumberCli
-	mkdir -p ./output
-	cp -R src/test/resources/images output
+	- ./gradlew cucumberCli
+	- mkdir -p ./output
+	- cp -R src/test/resources/images output
 
 test-all: test test-acceptance
 
