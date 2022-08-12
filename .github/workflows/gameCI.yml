@@ -33,7 +33,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ./output
-        key: test-output-dir-${{ runner.os }}-${{ github.sha }}
+        key: test-output-dir-${{ github.sha }}
   
   publish-tests:
     needs: acceptance-test
@@ -47,7 +47,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ./output
-        key: test-output-dir-${{ runner.os }}-${{ github.sha }}
+        key: test-output-dir-${{ github.sha }}
 
     - name: Publish Tests
       uses: peaceiris/actions-gh-pages@v3
