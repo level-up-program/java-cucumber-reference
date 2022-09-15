@@ -11,7 +11,7 @@ clean:
 bootstrap:
 	echo "'Bootstrap' currently has not steps"
 
-build: clean
+build: 
 	./gradlew build -x test
 	
 package:
