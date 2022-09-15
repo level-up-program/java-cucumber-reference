@@ -27,7 +27,13 @@ jobs:
       run: make bootstrap
       
     - name: Run acceptance tests
-      run: make test-acceptance
+      run: ./gradlew cucumberCli
+
+    - name: Make output dir
+      run: mkdir -p ./output
+
+    - name: Copy images to output dir
+      run: cp -R src/test/resources/images output
 
     - name: Cache test output
       uses: actions/cache@v3
