@@ -16,6 +16,8 @@ public class MoveSteps {
     int startX, startY, endX, endY;
     GameController.DIRECTION direction;
     Point currentPosition;
+    int turnCount;
+    int currentTurnCount;
 
     @Given("the character starts at position with XCoordinates {int}")
     public void givenTheCharacterStartsAtX(int startX) {
@@ -32,6 +34,11 @@ public class MoveSteps {
         this.direction = GameController.DIRECTION.valueOf(direction);
     }
 
+    @Given("the turn count is {int}")
+    public void givenTheTurnCountIs(int turnCount) {
+        this.turnCount = turnCount;
+    }
+
     @When("the character moves")
     public void theCharacterMoves() {
         gc = new GameController();
@@ -40,6 +47,7 @@ public class MoveSteps {
         gc.move(this.direction);
         GameController.GameStatus status = gc.getStatus();
         this.currentPosition = status.currentPosition;
+        this.currentTurnCount = status.turnCount;
     }
 
     @Then("the character is now at position with XCoordinates {int}")
@@ -52,6 +60,11 @@ public class MoveSteps {
     public void checkYCoordinates(int endY) {
         assertNotNull("Expected position not null", this.currentPosition);
         assertEquals(endY, this.currentPosition.y);
+    }
+
+    @Then("the new turn count is {int}")
+    public void checkTurnCount(int turnCount) {
+        assertEquals(turnCount, this.currentTurnCount);
     }
 
 }

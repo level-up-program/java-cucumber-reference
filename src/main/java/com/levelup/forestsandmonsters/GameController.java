@@ -4,12 +4,12 @@ import java.awt.Point;
 
 public class GameController {
     Character character;
-    GameMap map;
 
     public class GameStatus {
         // TODO: Add other status data
         public String characterName;
         public Point currentPosition;
+        public int turnCount;
 
         @Override
         public String toString() {
@@ -35,40 +35,27 @@ public class GameController {
     }
 
     public void startGame() {
-        map = new GameMap();
-        if(character == null)
-        {
-            this.character = new Character();
-        }
-        character.enterMap(map);
-        this.status.characterName = this.character.name;
-        this.status.currentPosition = this.character.getPosition().coordinates;
+        
     }
 
     public GameStatus getStatus() {
         GameStatus snapshotStatus = new GameStatus();
         snapshotStatus.characterName = this.status.characterName;
-        snapshotStatus.currentPosition = this.status.currentPosition;
         return snapshotStatus;
     }
 
     public void move(DIRECTION directionToMove) {
-        character.move(directionToMove);
-        this.status.currentPosition = character.getPosition().coordinates;
+        
     }
 
     //Exists for testability. Is not a system operation.
     public void setCharacterPosition(Point coordinates) {
-        if(character == null)
-            this.character = new Character();
-        this.character.currentPosition = new Position(coordinates.x, coordinates.y);
-        this.status.characterName = this.character.name;
-        this.status.currentPosition = this.character.currentPosition.coordinates;
+       
     }
 
     // Exists for testability. Is not a system operation.
     public int getTotalPositions() {
-        return this.map.getTotalPositions();
+        return -9999;
     }
 
 }
