@@ -50,4 +50,22 @@ public class CharacterTest {
         assertEquals(mockMap.STUBBED_NEW_POSITION, testObj.currentPosition);
     }
 
+    //Simple test here, since conditions are tested in Cucumber
+    @Test
+    public void moveIncrementsMoveCount() {
+        int arbitrary_starting_move_count = 32;
+        int arbitrary_expected_move_count = arbitrary_starting_move_count+1;
+
+        Character testObj = new Character();
+        FakeGameMap mockMap = new FakeGameMap();
+        Position startingPosition = new Position(5,0);
+        
+        testObj.map = mockMap;
+        testObj.currentPosition = startingPosition;
+        testObj.moveCount = arbitrary_starting_move_count;
+
+        testObj.move(DIRECTION.SOUTH);
+        assertEquals(arbitrary_expected_move_count, testObj.getMoveCount());
+    }
+
 }

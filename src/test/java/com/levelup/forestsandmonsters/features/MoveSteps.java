@@ -14,6 +14,7 @@ public class MoveSteps {
 
     GameController gc;
     int startX, startY, endX, endY;
+    int startingMoveCount, endingMoveCount;
     GameController.DIRECTION direction;
     Point currentPosition;
 
@@ -27,6 +28,11 @@ public class MoveSteps {
         this.startY = startY;
     }
 
+    @Given("the current move count is {int}")
+    public void the_current_move_count_is_starting_move_count(int startingMoveCount) {
+        this.startingMoveCount = startingMoveCount;
+    }
+
     @Given("the player choses to move in {word}")
     public void givenPlayerChoosesDirection(String direction) {
         this.direction = GameController.DIRECTION.valueOf(direction);
@@ -36,10 +42,11 @@ public class MoveSteps {
     public void theCharacterMoves() {
         gc = new GameController();
         gc.startGame();
-        gc.setCharacterPosition(new Point(this.startX, this.startY));
+        gc.setCharacterPositionAndMoveCount(new Point(this.startX, this.startY), this.startingMoveCount);
         gc.move(this.direction);
         GameController.GameStatus status = gc.getStatus();
         this.currentPosition = status.currentPosition;
+        this.endingMoveCount = status.moveCount;
     }
 
     @Then("the character is now at position with XCoordinates {int}")
@@ -52,6 +59,11 @@ public class MoveSteps {
     public void checkYCoordinates(int endY) {
         assertNotNull("Expected position not null", this.currentPosition);
         assertEquals(endY, this.currentPosition.y);
+    }
+
+    @Then("the ending move count is {int}")
+    public void the_ending_move_count_is(int endingMoveCount) {
+        assertEquals(endingMoveCount, this.endingMoveCount);
     }
 
 }

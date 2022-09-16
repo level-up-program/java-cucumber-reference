@@ -10,6 +10,8 @@ Scenario Outline: Set player name
     Then the Game sets the player's name to <playerNameOutput>
     Examples:
         | playerNameInput | playerNameOutput |
-        | "Erin"          | "Erin"           |
-        | ""              | "Player"         |
+        | "Michelle"          | "Michelle"           |
+        | ""              | "Erin"         |
+        | "Complicated name that is very long and strange" | "Complicated name that is very long and strange" |
+        | "Name_$#*(" | "Name_$#*(" |
 
