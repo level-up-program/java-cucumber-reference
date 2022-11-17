@@ -18,13 +18,13 @@ public class GameSteps {
     }
 
     @When("the character sets their name")
-    public void whenThePlayerSetsTheirName() {
+    public void whenTheCharacterSetsTheirName() {
         gc = new GameController();
         gc.createCharacter(characterName);
     }
 
     @Then("the Game sets the character's name to {string}")
-    public void thenTheGameSetsThePlayersName(String expectedName) {
+    public void thenTheGameSetsTheCharactersName(String expectedName) {
         assertEquals(expectedName, gc.getStatus().characterName);
     }
 
