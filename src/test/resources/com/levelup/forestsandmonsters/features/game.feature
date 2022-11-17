@@ -4,12 +4,12 @@ Feature: ForestsAndMonsters
 I want to create a new custom character, setting only their name.
 This split is VERY simple, to get us started. Just barebones game functionality.
 
-Scenario Outline: Set player name
-    Given the player's name is <playerNameInput>
-    When the player sets their name
-    Then the Game sets the player's name to <playerNameOutput>
+    Scenario Outline: Set character name
+    Given the character's name is <characterNameInput>
+    When the character sets their name
+    Then the Game sets the character's name to <characterNameOutput>
     Examples:
-        | playerNameInput | playerNameOutput |
+        | characterNameInput | characterNameOutput |
         | "Michelle"          | "Michelle"           |
         | ""              | "Erin"         |
         | "Complicated name that is very long and strange" | "Complicated name that is very long and strange" |
