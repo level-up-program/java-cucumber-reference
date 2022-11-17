@@ -10,22 +10,22 @@ import io.cucumber.java.en.When;
 public class GameSteps {
 
     GameController gc;
-    String playerName;
+    String characterName;
 
-    @Given("the player's name is {string}")
-    public void givenThePlayersNameIs(String playerName) {
-        this.playerName = playerName;
+    @Given("the character's name is {string}")
+    public void givenTheCharactersNameIs(String characterName) {
+        this.characterName = characterName;
     }
 
-    @When("the player sets their name")
-    public void whenThePlayerSetsTheirName() {
+    @When("the character sets their name")
+    public void whenTheCharacterSetsTheirName() {
         gc = new GameController();
-        gc.createCharacter(playerName);
+        gc.createCharacter(characterName);
     }
 
-    @Then("the Game sets the player's name to {string}")
-    public void thenTheGameSetsThePlayersName(String expectedName) {
-        assertEquals(expectedName, gc.getStatus().playerName);
+    @Then("the Game sets the character's name to {string}")
+    public void thenTheGameSetsTheCharactersName(String expectedName) {
+        assertEquals(expectedName, gc.getStatus().characterName);
     }
 
 }
