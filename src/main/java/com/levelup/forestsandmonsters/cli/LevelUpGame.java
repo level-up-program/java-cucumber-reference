@@ -41,7 +41,7 @@ public class LevelUpGame implements Quit.Command {
     isGameStarted = true;
     gameController.startGame();
     // TODO: Update this prompt. Also, do you want to get the game status and tell
-    // the player where their character is?
+    // the character where their character is?
     System.out.println("Welcome to Forests and Monsters! You have entered a mysterious place.");
     System.out.println("Would you like to go North(N), South(S), East(E), West(W) or Exit(X)?");
   }

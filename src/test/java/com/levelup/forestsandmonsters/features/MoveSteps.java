@@ -12,7 +12,7 @@ import io.cucumber.java.en.When;
 
 public class MoveSteps {
 
-    GameController gc;
+    GameController testObj = new GameController();
     int startX, startY, endX, endY;
     GameController.DIRECTION direction;
     Point currentPosition;
@@ -32,12 +32,16 @@ public class MoveSteps {
         this.direction = GameController.DIRECTION.valueOf(direction);
     }
 
+    @Given("the current move count is {int}")
+    public void givenTheCurrentMoveCountIs(int currentMoveCount) {
+        testObj.setCurrentMoveCount(currentMoveCount);
+    }
+
     @When("the character moves")
     public void theCharacterMoves() {
-        gc = new GameController();
-        gc.setCharacterPosition(new Point(this.startX, this.startY));
-        gc.move(this.direction);
-        GameController.GameStatus status = gc.getStatus();
+        testObj.setCharacterPosition(new Point(this.startX, this.startY));
+        testObj.move(this.direction);
+        GameController.GameStatus status = testObj.getStatus();
         this.currentPosition = status.currentPosition;
     }
 
@@ -51,6 +55,11 @@ public class MoveSteps {
     public void checkYCoordinates(int endY) {
         assertNotNull("Expected position not null", this.currentPosition);
         assertEquals(endY, this.currentPosition.y);
+    }
+
+    @Then("the new move count is {int}")
+    public void checkMoveCount(int endingMoveCount) {
+        assertEquals(endingMoveCount, testObj.getStatus().moveCount);
     }
 
 }
