@@ -6,7 +6,7 @@ Feature: Move in a direction
     Scenario Outline: Move in a direction
         Given the character starts at position with XCoordinates <startingPositionX> 
         And starts at YCoordinates <startingPositionY>
-        And the player choses to move in <direction>
+        And the player chooses to move in <direction>
         And the current move count is <startingMoveCount>
         When the character moves
         Then the character is now at position with XCoordinates <endingPositionX>
