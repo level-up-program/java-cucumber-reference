@@ -27,7 +27,7 @@ public class MoveSteps {
         this.startY = startY;
     }
 
-    @Given("the player choses to move in {word}")
+    @Given("the player chooses to move in {word}")
     public void givenCharacterChoosesDirection(String direction) {
         this.direction = GameController.DIRECTION.valueOf(direction);
     }
