@@ -9,7 +9,7 @@ clean:
 	rm -rf levelup-reports
 
 bootstrap:
-	echo "'Bootstrap' currently has not steps"
+	echo "Good job! You ran bootstrap."
 
 build: clean
 	./gradlew build -x test
