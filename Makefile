@@ -9,9 +9,9 @@ clean:
 	rm -rf levelup-reports
 
 bootstrap:
-	echo "Good job! You ran bootstrap."
+	echo "'Bootstrap' works."
 
-build: clean
+build: 
 	./gradlew build -x test
 	
 package:
@@ -23,11 +23,10 @@ test:
 
 test-acceptance: 
 	echo "Running cucumber tests"
-	./gradlew cucumberCli
-	mkdir -p ./output
-	cp -R src/test/resources/images output
+	- ./gradlew cucumberCli
+	- mkdir -p ./output
+	- cp -R src/test/resources/images output
 
 test-all: test test-acceptance
 
 run: build
-	java -jar ./build/libs/LevelUpGame-0.0.1-SNAPSHOT.jar
