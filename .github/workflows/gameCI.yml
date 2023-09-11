@@ -55,11 +55,11 @@ jobs:
       run: ./gradlew cucumberCli
 
     - name: Make output dir
-      if: ${{ always() }}
+      if: always()
       run: mkdir -p ./output
 
     - name: Copy images to output dir
-      if: ${{ always() }}
+      if: always()
       run: cp -R src/test/resources/images output
 
     - name: Setup Pages
