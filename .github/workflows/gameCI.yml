@@ -23,6 +23,9 @@ jobs:
   
   acceptance-test:
     runs-on: self-hosted
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
     - uses: actions/checkout@v3
@@ -45,29 +48,15 @@ jobs:
       if: ${{ always() }}
       run: cp -R src/test/resources/images output
 
-    - name: Cache test output
-      if: ${{ always() }}
-      uses: actions/cache@v3
+    - name: Setup Pages
+      if: always()
+      uses: actions/configure-pages@v3
+    - name: Upload pages artifact
+      if: always()
+      uses: actions/upload-pages-artifact@v2
       with:
         path: ./output
-        key: test-output-dir-${{ github.sha }}
-  
-  publish-tests:
-    needs: acceptance-test
-    if: ${{ always() }}
-    runs-on: self-hosted
-
-    steps:
-    - uses: actions/checkout@v3
-
-    - name: Fetch cache test output
-      uses: actions/cache@v3
-      with:
-        path: ./output
-        key: test-output-dir-${{ github.sha }}
-
-    - name: Publish Tests
-      uses: level-up-program-dev/actions-gh-pages@main
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./output
+    - name: Deploy to GitHub Pages
+      if: always()
+      id: deployment
+      uses: actions/deploy-pages@v2
