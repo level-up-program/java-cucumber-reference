@@ -2,7 +2,7 @@ name: Makefile CI
 
 on:
   push:
-    branches: [ main, develop, syncpoint* ]
+    branches: [ main, develop ]
   pull_request:
     branches: [ main ]
 
