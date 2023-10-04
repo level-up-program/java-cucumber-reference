@@ -12,18 +12,18 @@ bootstrap:
 	echo "'Bootstrap' worked"
 
 build: 
-	./gradlew build -x test
+	./gradlew build -x test --warning-mode none
 	
 package:
-	./gradlew assemble
+	./gradlew assemble --warning-mode none
 
 test: 
 	echo "Running unit tests"
-	./gradlew test
+	./gradlew test --warning-mode none
 
 test-acceptance: 
 	echo "Running cucumber tests"
-	- ./gradlew cucumberCli
+	- ./gradlew cucumberCli --warning-mode none
 	- mkdir -p ./output
 	- cp -R src/test/resources/images output
 
