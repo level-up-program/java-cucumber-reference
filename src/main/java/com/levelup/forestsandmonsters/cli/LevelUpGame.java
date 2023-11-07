@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.levelup.forestsandmonsters.GameController;
 import com.levelup.forestsandmonsters.GameController.GameStatus;
+import java.awt.Point;
 
 import org.springframework.shell.Availability;
 import org.springframework.shell.standard.ShellComponent;
@@ -83,11 +84,22 @@ public class LevelUpGame implements Quit.Command {
   }
 
   private void printSummary() {
-    System.out.println("Exiting the mysterious land!");
-    for (GameStatus status : gameHistory) {
-      System.out.println(status);
+    if (!gameHistory.isEmpty() && isGameStarted) {
+      Point startingPosition = gameHistory.get(0).currentPosition;
+      Point endingPosition = this.gameController.getStatus().currentPosition;
+      System.out.println("You started on " + startingPosition.x + "," + startingPosition.y);
+      System.out.println("...and ended on " + endingPosition.x + "," + endingPosition.y);
+      System.out.println("Number of moves taken:" + gameHistory.size());
     }
-    System.out.println("Number of moves taken:" + gameHistory.size());
+    else if (isGameStarted) {
+      System.out.println("You started and edned on " + this.gameController.getStatus().currentPosition.x + "," + this.gameController.getStatus().currentPosition.y);
+      System.out.println("You didn't move at all!");
+    }
+    else {
+      System.out.println("You left before you began!");
+    }
+  
+
   }
 
   private void updateStatus(GameStatus status) {
